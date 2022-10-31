@@ -5,4 +5,4 @@ BEFORE STARTING:
 
 
 
-Run 'setup.sh'. Petalinux build will be located in './buid_v[selected build version]'
+Run 'setup.sh'. Petalinux build will be located in './build_v[selected build version]'
