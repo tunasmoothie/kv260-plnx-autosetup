@@ -79,6 +79,6 @@ then
 	echo 'BOARD_VARIANT = "kv"' >>  build_v$PLNX_VERSION/project-spec/meta-user/conf/petalinuxbsp.conf
 fi
 
-petalinux-build -p build_v$PLNX_VERSION 
+petalinux-build -p build_v${PLNX_VERSION} 
 
 
