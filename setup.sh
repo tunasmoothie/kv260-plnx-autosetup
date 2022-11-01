@@ -62,17 +62,16 @@ else
    
 fi
 
-ans='n'
-
+ans=n
 if [ -d build_v$PLNX_VERSION ]; then
 	echo "Found pre-existing build for v$PLNX_VERSION!"
-	echo "Force creation and overwrite? (y/n)"
+	echo "Force new project creation and overwrite? [y/n]"
 	read ans
 else
 	petalinux-create -t project -s cache/v$PLNX_VERSION.bsp -n "build_v$PLNX_VERSION"
 fi
 
-if (ans == 'y') 
+if ans==y 
 then
 	petalinux-create -t project -s cache/v$PLNX_VERSION.bsp -n "build_v$PLNX_VERSION" --force
 fi
