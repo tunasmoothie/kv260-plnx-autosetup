@@ -1,7 +1,9 @@
 #!/bin/bash
+BASEDIR=$(dirname "$0")
+ENV_SETUP_SCRIPT="$BASEDIR/env.sh"
+
 PLNX_VERSION=0
 PLNX_SDK_PATH="~/Documents/plnxSDK2021.1"
-ENV_SETUP_SCRIPT="env.sh"
 
 
 echo "Creating project for KV260..."
@@ -12,7 +14,8 @@ echo "3: 2022.2"
 echo "*MAKE SURE TO SET TOOL PATHS IN ENV.SH FIRST*"
 read ver
 
-cd .
+cd $BASEDIR
+
 case ${ver} in
 	1) PLNX_VERSION=2020.2
 	;;
@@ -43,7 +46,7 @@ if [ ! -f cache/v$PLNX_VERSION.bsp ]; then
 		3) 2022.2
 	    	wget -O cache/v2022.2.bsp "https://xilinx-ax-dl.entitlenow.com/dl/ul/2022/10/17/R210702237/xilinx-kv260-starterkit-v2022.2-10141622.bsp?hash=krc0GyRk7u3zGKeFQ7UCTQ&expires=1667217663&filename=xilinx-kv260-starterkit-v2022.2-10141622.bsp"
 			;;
-		*) 0
+		*)
 	    	echo "Not a valid version."
 	    	exit
 		esac
@@ -79,6 +82,10 @@ then
 	echo 'BOARD_VARIANT = "kv"' >>  build_v$PLNX_VERSION/project-spec/meta-user/conf/petalinuxbsp.conf
 fi
 
-petalinux-build -p build_v${PLNX_VERSION} 
+echo "======== Performing default build ========"
+sed -i 's/# CONFIG_xrt is not set/CONFIG_xrt=y/' build_v2021.1/project-spec/configs/rootfs_config
+echo "Enabled xrt package in rootfs"
 
+petalinux-build -p build_v${PLNX_VERSION} 
+echo "========= Default build complete ========="
 

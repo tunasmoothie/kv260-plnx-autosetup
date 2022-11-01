@@ -6,3 +6,7 @@ BEFORE STARTING:
 
 
 Run 'setup.sh'. Petalinux build will be located in './build_v[selected build version]'
+
+
+# Common Problems
+- If petalinux-build fails due to fetcher failure, manually delete 'components' folder inside the corresponding build folder.
