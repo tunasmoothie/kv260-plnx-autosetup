@@ -4,8 +4,8 @@
 - Please update 'env.sh' with the appropriate paths to your Xilinx tool installations.
 
 
-## Instructions
-Run 'setup.sh'. Petalinux build will be located in './build_v[selected build version]'
+## Usage
+Run 'setup.sh'. Petalinux build folder will be created and named **build_v[selected build version]**
 
 
 
