@@ -3,8 +3,7 @@
 #### BEFORE STARTING:
 1. Update 'env.sh' with the appropriate paths to your Xilinx tool installations.
 2. Install Device Tree Compiler Tool, available through ```apt```
-
-```sudo apt install device-tree-compiler```
+   ```sudo apt install device-tree-compiler```
 
 
 ## Usage
