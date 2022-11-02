@@ -10,7 +10,7 @@ echo "Choose petalinux build version:"
 echo "1: 2020.2"
 echo "2: 2021.1"
 echo "3: 2022.2" 
-echo "*MAKE SURE TO SET TOOL PATHS IN ENV.SH FIRST*"
+echo "*MAKE SURE TO SET TOOL PATHS IN 'paths.conf' FIRST*"
 
 read ver
 
@@ -71,7 +71,7 @@ else
 	petalinux-create -t project -s cache/v$PLNX_VERSION.bsp -n "build_v$PLNX_VERSION"
 fi
 
-if ans==y 
+if $ans==y
 then
 	petalinux-create -t project -s cache/v$PLNX_VERSION.bsp -n "build_v$PLNX_VERSION" --force
 fi
@@ -92,3 +92,4 @@ echo "Enabled xrt package in rootfs"
 petalinux-build -p build_v${PLNX_VERSION} 
 echo "========= Default build complete ========="
 
+exit
